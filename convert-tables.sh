@@ -49,7 +49,6 @@ latin_tables=(
     worldwide_offices
 )
 
-
 for table in "${latin_tables[@]}"; do
     LATIN1FILE="/tmp/${DB}.${table}.latin1.sql"
     mysqldump -h$DBHOST -u$DBUSER -p$DBPASS --opt -e --skip-set-charset --default-character-set=latin1 --skip-extended-insert $DB --tables $table | sed 's/DEFAULT CHARSET=latin1/DEFAULT CHARSET=utf8/' > $LATIN1FILE
